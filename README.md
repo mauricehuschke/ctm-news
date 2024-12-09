@@ -11,3 +11,6 @@ Nachrichtenübersicht
 
 Detailseite einer Nachricht
 > Create a news detail page featuring a header with the news title, a header image, a subtitle displayed below the image, and the detailed news content consisting of text and images.
+
+(Optional) Persönliche Settings Seite
+> Create a personal settings page with a dark and light mode toggle switch, a section displaying the user's name and personal profile image, a "Logout" button, and a "Delete Account and All Data" button.
