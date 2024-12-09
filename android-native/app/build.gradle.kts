@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "de.chrisbecker386.ctmnewsandroidnative"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "de.chrisbecker386.ctmnewsandroidnative"
@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.navigation.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
