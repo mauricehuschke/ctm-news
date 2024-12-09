@@ -18,6 +18,7 @@ import de.chrisbecker386.ctmnewsandroidnative.ui.navigation.NavigationGraph
 import de.chrisbecker386.ctmnewsandroidnative.ui.navigation.OverviewScreen
 import de.chrisbecker386.ctmnewsandroidnative.ui.theme.CtmNewsAndroidNativeTheme
 
+
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
