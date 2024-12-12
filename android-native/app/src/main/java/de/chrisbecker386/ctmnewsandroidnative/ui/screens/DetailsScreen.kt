@@ -29,7 +29,7 @@ fun DetailsScreen(detailsType: Int) {
 
         // Header image
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground), // Replace with actual image loading
+            painter = painterResource(id = newsItem.imageRes), // Replace with actual image loading
             contentDescription = newsItem.title,
             modifier =
                 Modifier
