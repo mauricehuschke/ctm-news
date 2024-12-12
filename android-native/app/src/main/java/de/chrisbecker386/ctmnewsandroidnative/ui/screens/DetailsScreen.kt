@@ -16,41 +16,40 @@ import de.chrisbecker386.ctmnewsandroidnative.data.model.dummyNewsItems
 @Composable
 fun DetailsScreen(detailsType: Int) {
     val newsItem = dummyNewsItems[detailsType]
-    // Pass NewsItem as argument
-    Column(
-        modifier =
-            Modifier
-                .fillMaxSize()
-                .padding(16.dp),
-    ) {
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Spacer(modifier = Modifier.height(8.dp))
         // Header with title
         Text(text = newsItem.title, style = MaterialTheme.typography.headlineMedium)
         Spacer(modifier = Modifier.height(8.dp))
-
         // Header image
+
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground), // Replace with actual image loading
+            painter = painterResource(id = newsItem.imageRes), // Replace with actual image loading
             contentDescription = newsItem.title,
-            modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .height(200.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp),
             contentScale = ContentScale.Crop,
         )
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(16.dp))
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+        ) {
+            // Subtitle
+            Text(
+                text = newsItem.description.take(20),
+                style = MaterialTheme.typography.titleMedium,
+            ) // Replace with actual subtitle
+            Spacer(modifier = Modifier.height(8.dp))
 
-        // Subtitle
-        Text(
-            text = "Subtitle",
-            style = MaterialTheme.typography.titleMedium,
-        ) // Replace with actual subtitle
-        Spacer(modifier = Modifier.height(8.dp))
-
-        // Detailed news content (text and images)
-        Text(
-            text = "Detailed news content goes here...",
-            style = MaterialTheme.typography.bodyMedium,
-        )
+            // Detailed news content (text and images)
+            Text(
+                text = newsItem.description,
+                style = MaterialTheme.typography.bodyMedium,
+            )
+        }
     }
 }
 

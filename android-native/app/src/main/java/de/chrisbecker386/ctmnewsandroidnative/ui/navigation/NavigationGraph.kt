@@ -1,5 +1,8 @@
 package de.chrisbecker386.ctmnewsandroidnative.ui.navigation
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -19,13 +22,33 @@ fun NavigationGraph(
         startDestination = LoginScreen.route,
         modifier = modifier,
     ) {
-        composable(LoginScreen.route) {
+        composable(LoginScreen.route,  enterTransition = {
+            return@composable fadeIn(tween(1000))
+        }, exitTransition = {
+            return@composable slideOutOfContainer(
+                AnimatedContentTransitionScope.SlideDirection.Start, tween(700)
+            )
+        }, popEnterTransition = {
+            return@composable slideIntoContainer(
+                AnimatedContentTransitionScope.SlideDirection.End, tween(700)
+            )
+        }) {
             LoginScreen(onNavigateToOverview = {
                 navController.navigate(OverviewScreen.route)
             })
         }
 
-        composable(OverviewScreen.route) {
+        composable(OverviewScreen.route,  enterTransition = {
+            return@composable fadeIn(tween(1000))
+        }, exitTransition = {
+            return@composable slideOutOfContainer(
+                AnimatedContentTransitionScope.SlideDirection.Start, tween(700)
+            )
+        }, popEnterTransition = {
+            return@composable slideIntoContainer(
+                AnimatedContentTransitionScope.SlideDirection.End, tween(700)
+            )
+        }) {
             OverviewScreen(onNavigateToDetails = { detailsType ->
                 navController.navigateToDetailsScreen(detailsType)
             })
@@ -34,6 +57,17 @@ fun NavigationGraph(
         composable(
             route = DetailsScreen.routeWithArgs,
             arguments = DetailsScreen.arguments,
+            enterTransition = {
+                return@composable fadeIn(tween(1000))
+            }, exitTransition = {
+                return@composable slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start, tween(700)
+                )
+            }, popEnterTransition = {
+                return@composable slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End, tween(700)
+                )
+            }
         ) { backStackEntry ->
             val detailsType = backStackEntry.arguments?.getInt(DetailsScreen.detailsTypeArgs)
             if (detailsType != null) {
